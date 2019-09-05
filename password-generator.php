@@ -73,8 +73,13 @@ function generatePassword($characters, $length)
     $password = [];
     $charactersLength = strlen($characters) - 1;
 
+    $randomFunction = 'mt_rand';
+    if (function_exists('random_int')) {
+        $randomFunction = 'random_int';
+    }
+
     for ($i = 0; $i < $length; $i++) {
-        $key = rand(0, $charactersLength);
+        $key = $randomFunction(0, $charactersLength);
         $password[] = $characters[$key];
     }
 
