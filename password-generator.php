@@ -57,7 +57,7 @@ function characterMapping($key)
         case 'special':
             return '!"#$%&\\\'()*+,-./:;<=>?@[\]^_`{|}~';
         default:
-            return 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~';
+            return 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!"#$%&\\\'()*+,-./:;<=>?@[\]^_`{|}~';
     }
 }
 
