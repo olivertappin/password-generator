@@ -36,6 +36,32 @@ function length($length)
 }
 
 /**
+ * Return a character list based on a mapping key.
+ *
+ * @param string $key
+ * @return string
+ */
+function characterMapping($key)
+{
+    switch ($key) {
+        case 'numeric':
+            return '0123456789';
+        case 'lowercase':
+            return 'abcdefghijklmnopqrstuvwxyz';
+        case 'uppercase':
+            return 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        case 'alpha':
+            return 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        case 'alphanumeric':
+            return 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890';
+        case 'special':
+            return '!"#$%&\\\'()*+,-./:;<=>?@[\]^_`{|}~';
+        default:
+            return 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~';
+    }
+}
+
+/**
  * Generate a password string.
  *
  * @param string $characters
@@ -58,6 +84,7 @@ function generatePassword($characters, $length)
 $length = (int)argument($argv, 'length');
 $length = length($length);
 
-$characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890!"#$%&\'()*+,-./:;<=>?@[\]^_`{|}~';
+$charactersMappingKey = argument($argv, 'chars');
+$characters = characterMapping($charactersMappingKey);
 
 echo generatePassword($characters, $length) . PHP_EOL;
